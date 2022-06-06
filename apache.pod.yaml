@@ -1,0 +1,27 @@
+# A Apache web server Kubernetes pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: apache
+  labels:
+    app: apache
+spec:
+  containers:
+    - name: apache
+      resources:
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        requests:
+          cpu: 100m
+          memory: 100Mi
+      image: httpd:2.4
+      ports:
+        - containerPort: 80
+          protocol: TCP
+      volumeMounts:
+        - name: apache-data
+          mountPath: /usr/local/apache2/htdocs
+  volumes:
+    - name: apache-data
+      emptyDir: {}

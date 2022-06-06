@@ -1,0 +1,9 @@
+# A ansible playbook that installs the apache web server:
+
+- name: Install apache
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Install apache
+      yum: name=httpd state=present
